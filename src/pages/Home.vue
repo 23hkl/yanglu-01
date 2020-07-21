@@ -1,41 +1,23 @@
 <template>
-  <div class="home">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for="item of banners" :key="item.id">
-            <img :src="item.picUrl" alt="">
-        </van-swipe-item>
-      </van-swipe>
-  </div>
+    <div class="home">
+            <router-view />
+            <TabBar></TabBar>
+    </div>
 </template>
 <script>
-import axios from "axios"
+import TabBar from "../components/TabBar"
 export default {
-  data(){
-      return {
-        banners:[]
-      }
-  },
-  created(){
-      axios.get("https://api.it120.cc/small4/banner/list").then((msg)=>{
-          console.log(msg)
-          this.banners = msg.data.data
-      })
-  }
+    data(){
+          return {
+              
+          }
+    },
+    components:{
+     
+        TabBar
+        
+    }
 }
 </script>
-<style>
-    .my-swipe{
-        height: 270px;
-        overflow: hidden;
-    }
-    .my-swipe .van-swipe-item {
-    /* color: #fff;
-    font-size: 20px;
-    line-height: 150px;
-    text-align: center;
-    background-color: #39a9ed; */
-  }
-    .my-swipe .van-swipe-item img{
-        width: 100%;
-    }
+<style lang="less">
 </style>
